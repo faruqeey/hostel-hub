@@ -56,7 +56,7 @@ export default function AdminDashboard() {
   const pendingHostelsList = (hostels.data ?? []).filter((h) => h.status === "PENDING").slice(0, 5);
 
   return (
-    <div className="space-y-6 max-w-6xl">
+    <div className="space-y-6 max-w-6xl overflow-x-auto px-4">
       <div>
         <h1 className="text-2xl font-bold text-slate-100">Admin Dashboard</h1>
         <p className="text-slate-400 text-sm mt-1">Platform overview and management controls</p>

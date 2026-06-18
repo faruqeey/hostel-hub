@@ -13,7 +13,7 @@ import toast from "react-hot-toast";
 export default function LandingPage() {
   const [contactForm, setContactForm] = useState({ name: "", phone: "", email: "", message: "" });
   const [submitting, setSubmitting] = useState(false);
-  const WHATSAPP_NUMBER = "2348000000000"; // TODO: replace with your admin WhatsApp
+  const WHATSAPP_NUMBER = "+2347047927079"; 
 
   const handleContactSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -253,7 +253,7 @@ export default function LandingPage() {
                 <Input
                   label="Email (optional)"
                   type="email"
-                  placeholder="you@example.com"
+                  placeholder="yourmail@gmail.com"
                   value={contactForm.email}
                   onChange={(e) => setContactForm((p) => ({ ...p, email: e.target.value }))}
                 />

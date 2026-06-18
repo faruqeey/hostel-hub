@@ -90,7 +90,7 @@ export default function LandlordBookingsPage() {
   };
 
   return (
-    <div className="space-y-6 max-w-6xl">
+    <div className="space-y-6 max-w-6xl overflow-x-auto px-4">
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-2xl font-bold text-slate-100">Bookings</h1>
@@ -119,8 +119,8 @@ export default function LandlordBookingsPage() {
           description={statusFilter ? "No bookings match this filter." : "Students haven't made any bookings yet."}
         />
       ) : (
-        <div className="rounded-xl border border-slate-700/50 overflow-hidden">
-          <table className="w-full text-sm">
+        <div className="rounded-xl border border-slate-700/50 overflow-x-auto">
+          <table className="w-full text-sm min-w-[700px]">
             <thead>
               <tr className="border-b border-slate-800 bg-slate-800/50">
                 {["Student", "Hostel / Room", "Academic Year", "Payment", "Status", "Date", "Actions"].map((h) => (

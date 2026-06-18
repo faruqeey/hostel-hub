@@ -88,7 +88,7 @@ export default function AdminUsersPage() {
   });
 
   return (
-    <div className="space-y-6 max-w-6xl">
+    <div className="space-y-6 max-w-6xl overflow-x-auto px-4">
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-2xl font-bold text-slate-100">Users</h1>
@@ -122,8 +122,8 @@ export default function AdminUsersPage() {
         </div>
       </div>
 
-      <div className="rounded-xl border border-slate-700/50 overflow-hidden">
-        <table className="w-full text-sm">
+      <div className="rounded-xl border border-slate-700/50 overflow-x-auto">
+        <table className="w-full text-sm min-w-[700px]">
           <thead>
             <tr className="border-b border-slate-800 bg-slate-800/50">
               {["User", "Role", "Phone", "Joined", "Actions"].map((h) => (
@@ -176,7 +176,7 @@ export default function AdminUsersPage() {
         title="Create New User"
         size="md"
       >
-        <div className="space-y-4">
+        <div className="space-y-6 max-w-6xl overflow-x-auto px-4">
           {apiError && (
             <div className="flex items-start gap-2.5 p-3 rounded-lg bg-red-500/10 border border-red-500/20">
               <AlertCircle className="h-4 w-4 text-red-400 flex-shrink-0 mt-0.5" />

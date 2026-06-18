@@ -215,7 +215,7 @@ export default function NewHostelPage() {
             />
             <Input
               label="WhatsApp Number (Optional)"
-              placeholder="e.g., +2348012345678"
+              placeholder="e.g., +23447927079"
               value={form.whatsapp_number}
               onChange={(e) => set("whatsapp_number", e.target.value)}
               hint="Students can also send payment proof via WhatsApp"

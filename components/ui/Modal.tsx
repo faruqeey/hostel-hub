@@ -57,14 +57,14 @@ export function Modal({
       {/* Modal */}
       <div
         className={cn(
-          "relative w-full rounded-2xl bg-slate-900 border border-slate-700/60",
+          "relative w-full max-h-[90vh] flex flex-col rounded-2xl bg-slate-900 border border-slate-700/60",
           "shadow-2xl shadow-black/50 animate-slide-up",
           sizeStyles[size],
           className
         )}
       >
         {(title || description) && (
-          <div className="flex items-start justify-between p-6 border-b border-slate-800">
+          <div className="flex items-start justify-between p-6 border-b border-slate-800 flex-shrink-0">
             <div>
               {title && (
                 <h2 className="text-lg font-semibold text-slate-100">{title}</h2>
@@ -78,7 +78,7 @@ export function Modal({
             </Button>
           </div>
         )}
-        <div className="p-6">{children}</div>
+        <div className="p-6 overflow-y-auto flex-1">{children}</div>
       </div>
     </div>
   );

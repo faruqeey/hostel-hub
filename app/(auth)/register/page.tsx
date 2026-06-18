@@ -114,7 +114,7 @@ function RegisterForm() {
           <Input
             label="Full Name"
             type="text"
-            placeholder="e.g. Hassan Mahmud"
+            placeholder="e.g. Faruk Abubakar"
             value={name}
             onChange={(e) => setName(e.target.value)}
             error={errors.name}
@@ -124,7 +124,7 @@ function RegisterForm() {
           <Input
             label="Email Address"
             type="email"
-            placeholder="you@university.edu.ng"
+            placeholder="you&university@gmail.com"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             error={errors.email}
