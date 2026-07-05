@@ -95,7 +95,7 @@ export default function HostelDetailPage() {
           toast.success(`Booked! You've been assigned ${assignedRoom}. Upload your payment receipt.`);
           setBookingModal(false);
           setNotes("");
-          router.push("/student/bookings");
+          router.push(`/student/bookings/${res.data.id}`);
         },
         onError: (err) => {
           toast.error(err.message || "Booking failed. Please try again.");

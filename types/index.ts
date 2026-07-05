@@ -3,6 +3,7 @@ export type UserRole = "ADMIN" | "LANDLORD" | "STUDENT";
 export type HostelStatus = "PENDING" | "APPROVED" | "REJECTED";
 
 export type BookingStatus =
+  | "PENDING"
   | "PENDING_VERIFICATION"
   | "CONFIRMED"
   | "REJECTED"

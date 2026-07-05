@@ -13,6 +13,7 @@ import { BookOpen, Upload, X, AlertTriangle } from "lucide-react";
 import { Booking } from "@/types";
 import { formatCurrency } from "@/utils/format";
 import toast from "react-hot-toast";
+import { PayWithPaystackButton } from "@/components/PayWithPaystackButton"; // ✅ ADD THIS IMPORT
 
 export default function StudentBookingsPage() {
   const { data: bookings = [], isLoading } = useBookings();
@@ -117,38 +118,78 @@ export default function StudentBookingsPage() {
               key={booking.id}
               booking={booking}
               actions={
-                <div className="flex gap-2 w-full">
+                <div className="flex flex-col gap-2 w-full">
+                   {/* ✅ PENDING – Pay with Paystack + Pay Manually + Cancel */}
+                  {booking.status === "PENDING" && (
+  <div className="flex flex-col gap-2 w-full">
+    <div className="flex gap-2 w-full">
+      <PayWithPaystackButton
+        bookingId={booking.id}
+        amountNaira={Number(booking.room?.price || 0)}
+      />
+      <Button
+        size="sm"
+        variant="outline"
+        className="flex-1"
+        onClick={() => openProofModal(booking)}
+      >
+        Pay Manually
+      </Button>
+    </div>
+    <Button
+      size="sm"
+      variant="ghost"
+      leftIcon={<X className="h-3.5 w-3.5" />}
+      onClick={() => openCancelModal(booking)}
+    >
+      Cancel
+    </Button>
+  </div>
+)}
+                  {/* PENDING_VERIFICATION – Upload Receipt + Cancel */}
                   {booking.status === "PENDING_VERIFICATION" && !booking.payment_proof && (
-                    <Button
-                      size="sm"
-                      variant="primary"
-                      leftIcon={<Upload className="h-3.5 w-3.5" />}
-                      className="flex-1"
-                      onClick={() => openProofModal(booking)}
-                    >
-                      Upload Receipt
-                    </Button>
+                    <div className="flex gap-2 w-full">
+                      <Button
+                        size="sm"
+                        variant="primary"
+                        leftIcon={<Upload className="h-3.5 w-3.5" />}
+                        className="flex-1"
+                        onClick={() => openProofModal(booking)}
+                      >
+                        Upload Receipt
+                      </Button>
+                      <Button
+                        size="sm"
+                        variant="ghost"
+                        leftIcon={<X className="h-3.5 w-3.5" />}
+                        onClick={() => openCancelModal(booking)}
+                      >
+                        Cancel
+                      </Button>
+                    </div>
                   )}
+
+                  {/* REJECTED – Re-upload Proof */}
                   {booking.status === "PENDING_VERIFICATION" && booking.payment_proof?.status === "REJECTED" && (
-                    <Button
-                      size="sm"
-                      variant="outline"
-                      leftIcon={<Upload className="h-3.5 w-3.5" />}
-                      className="flex-1 border-amber-500/40 text-amber-400 hover:bg-amber-500/10"
-                      onClick={() => openProofModal(booking)}
-                    >
-                      Re-upload Proof
-                    </Button>
-                  )}
-                  {booking.status === "PENDING_VERIFICATION" && (
-                    <Button
-                      size="sm"
-                      variant="ghost"
-                      leftIcon={<X className="h-3.5 w-3.5" />}
-                      onClick={() => openCancelModal(booking)}
-                    >
-                      Cancel
-                    </Button>
+                    <div className="flex gap-2 w-full">
+                      <Button
+                        size="sm"
+                        variant="outline"
+                        leftIcon={<Upload className="h-3.5 w-3.5" />}
+                        className="flex-1 border-amber-500/40 text-amber-400 hover:bg-amber-500/10"
+                        onClick={() => openProofModal(booking)}
+                      >
+                        Re-upload Proof
+                      </Button>
+                      <Button
+                        size="sm"
+                        variant="ghost"
+                        leftIcon={<X className="h-3.5 w-3.5" />}
+                        onClick={() => openCancelModal(booking)}
+                      >
+                        Cancel
+                      </Button>
+                    </div>
                   )}
                 </div>
               }

@@ -123,7 +123,7 @@ export async function POST(request: NextRequest) {
       .select("id")
       .eq("student_id", user.id)
       .eq("hostel_id",  hostel_id)
-      .in("status", ["PENDING_VERIFICATION", "CONFIRMED"])
+      .in("status", ["PENDING", "CONFIRMED"])
       .maybeSingle();
 
     if (duplicate) {
@@ -210,7 +210,7 @@ export async function POST(request: NextRequest) {
         hostel_id,
         academic_year,
         notes:         notes?.trim() ?? null,
-        status:        "PENDING_VERIFICATION",
+        status:        "PENDING",
       })
       .select()
       .single();
@@ -249,7 +249,7 @@ export async function POST(request: NextRequest) {
           ...booking,
           assigned_room: assignedRoom.room_number,
         },
-        message: `Success! You have been assigned ${assignedRoom.room_number}. Please upload your payment receipt.`,
+         message: `Success! You have been assigned ${assignedRoom.room_number}. Proceed to payment.`,
       },
       { status: 201 }
     );
