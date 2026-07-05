@@ -58,6 +58,7 @@ export function Badge({
 
 export function BookingStatusBadge({ status }: { status: BookingStatus }) {
   const config: Record<BookingStatus, { label: string; variant: BadgeVariant }> = {
+    PENDING: { label: "Pending", variant: "default" },
     PENDING_VERIFICATION: { label: "Pending Verification", variant: "warning" },
     CONFIRMED: { label: "Confirmed", variant: "success" },
     REJECTED: { label: "Rejected", variant: "danger" },
