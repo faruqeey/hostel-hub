@@ -44,14 +44,6 @@ export default function BookingConfirmClient({ booking }: { booking: any }) {
           <p className="text-center text-xs text-slate-500">
             Choose your preferred payment method
           </p>
-
-          <ManualPaymentModal
-            booking={booking}
-            isOpen={isManualModalOpen}
-            onClose={() => setIsManualModalOpen(false)}
-            onSubmit={handleManualSubmit}
-            isSubmitting={submitProof.isPending}
-          />
         </div>
       ) : (
         <p className="mt-6 rounded-lg bg-emerald-50 p-3 text-emerald-700">

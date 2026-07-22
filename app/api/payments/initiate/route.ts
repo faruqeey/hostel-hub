@@ -55,7 +55,7 @@ export async function POST(req: NextRequest) {
       email: profile?.email || user.email || 'student@example.com',
       amountKobo: Math.round(amount * 100),
       reference,
-      callbackUrl: `${process.env.NEXT_PUBLIC_SITE_URL}/student/bookings?payment=processing`,
+      callbackUrl: `${process.env.NEXT_PUBLIC_SITE_URL}/student/bookings/${booking.id}?payment=success`,
       metadata: {
         booking_id: booking.id,
         student_id: user.id,

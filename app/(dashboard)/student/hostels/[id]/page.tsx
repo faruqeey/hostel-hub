@@ -20,6 +20,7 @@ import { Skeleton } from "@/components/ui/Skeleton";
 import { cn } from "@/utils/cn";
 import { formatCurrency } from "@/utils/format";
 import toast from "react-hot-toast";
+import { ReviewsDisplay } from './ReviewsDisplay'
 
 const ACADEMIC_YEARS = [
   { value: "2024/2025", label: "2024/2025" },
@@ -91,8 +92,9 @@ export default function HostelDetailPage() {
       {
         onSuccess: (res) => {
           // res.data.assigned_room contains the auto-assigned room number
+          console.log("🔍 Booking response:", res);
           const assignedRoom = res.data?.assigned_room ?? "a room";
-          toast.success(`Booked! You've been assigned ${assignedRoom}. Upload your payment receipt.`);
+          toast.success(`Booked! You've been assigned ${assignedRoom}.`);
           setBookingModal(false);
           setNotes("");
           router.push(`/student/bookings/${res.data.id}`);
@@ -167,6 +169,8 @@ export default function HostelDetailPage() {
 
           {/* Favourite button */}
           <button
+            aria-label={isFavorited ? "Remove from favorites" : "Add to favorites"}
+            title={isFavorited ? "Remove from favorites" : "Add to favorites"}
             onClick={() =>
               toggleFavorite.mutate(id, {
                 onSuccess: (res) => toast.success(res.message),
@@ -375,7 +379,7 @@ export default function HostelDetailPage() {
           )}
         </div>
       </div>
-
+         
       {/* Booking Modal — no room selection, just confirm */}
       <Modal
         isOpen={bookingModal}
